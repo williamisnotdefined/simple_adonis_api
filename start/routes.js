@@ -19,3 +19,7 @@ const Route = use('Route')
 Route.get('/', () => { greeting: 'Hello world in JSON' })
 Route.post('/user', 'UserController.create')
 Route.post('/login', 'UserController.login')
+
+Route.resource('task', 'TaskController').apiOnly().middleware('auth')
+
+Route.post('task/:id/file', 'FileController.create').middleware('auth')
